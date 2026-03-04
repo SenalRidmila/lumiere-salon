@@ -63,7 +63,14 @@ export default function Navbar() {
       }`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between relative z-50">
           
-          <Link href="/" className="text-3xl font-serif tracking-widest text-salon-text z-50" onClick={() => setIsMobileMenuOpen(false)}>
+          <Link
+            href="/"
+            className="text-3xl font-serif tracking-widest text-salon-text z-50"
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          >
             LUMIÈRE
           </Link>
 
