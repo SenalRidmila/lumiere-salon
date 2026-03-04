@@ -1,26 +1,51 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* 1. Theme Configuration (Variables and Keyframes Only) */
+@theme {
+  --color-salon-bg: #E5E0D8;
+  --color-salon-text: #1F1E1C; 
+  --color-salon-mutedGold: #B89B72; 
+  --color-salon-champagne: #DCD6CD;
+  --color-salon-charcoal: #3A3836;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-serif: var(--font-playfair), serif;
+  --font-sans: var(--font-inter), sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --animate-fade-in: fadeIn 1.2s ease-in-out forwards;
+  --animate-slide-up: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes slideUp {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-33.33%); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 2. Global Base Styles (Outside @theme block) */
+@layer base {
+  html {
+    scroll-behavior: smooth; /* Dan meka haritama wada karai */
+  }
+
+  body {
+    background-color: var(--color-salon-bg);
+    color: var(--color-salon-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
 }
